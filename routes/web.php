@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+// home page route
+
+Route::get('/', 'PagesController@index');
+
+
+// test route
+
+
+// test route
+
+Route::get('test','TestController@index');
+Auth::routes();
+
