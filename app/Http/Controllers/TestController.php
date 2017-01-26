@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\EmailNotProvidedException;
 use Illuminate\Http\Request;
+use App\Widget;
 
 class TestController extends Controller
 {
@@ -13,10 +15,14 @@ class TestController extends Controller
      */
     public function index()
     {
-        $Beatles = ['John', 'Paul', 'George', 'Ringo'];
 
+        $result = Widget::findOrFail(39);
+        //throw new EmailNotProvidedException('facebook');
+       // $Beatles = ['John', 'Paul', 'George', 'Ringo'];
 
-        return view('test.index', compact('Beatles'));
+        //alert()->overlay('Problem', 'Cannot hear','error');
+
+       // return view('test.index', compact('Beatles'));
     }
 
 
