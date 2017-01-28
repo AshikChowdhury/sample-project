@@ -15,18 +15,70 @@
 
 Route::get('/admin', 'AdminController@index')->name('admin');
 
-// Auth routes
+// Authentication routes
 
-Auth::routes();
+Route::get('login', 'Auth\AuthController@showLoginForm')->name('login');
+Route::post('login', 'Auth\AuthController@login');
+Route::post('logout', 'Auth\AuthController@logout')->name('logout');
 
 // home page route
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'PagesController@index')->name('home');
+
+// MarketingImages routes
+
+Route::resource('marketing-image', 'MarketingImageController');
+
+// Password routes
+
+
+// Password Reset Routes...
+
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+// Privacy route
+
+Route::get('privacy', 'PagesController@privacy');
+
+// Profile
+
+Route::get('show-profile', 'ProfileController@showProfileToUser')->name('show-profile');
+
+Route::get('determine-profile-route', 'ProfileController@determineProfileRoute')->name('determine-profile-route');
+
+Route::resource('profile', 'ProfileController');
+
+// Registration routes
+
+Route::get('register', 'Auth\AuthController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\AuthController@register');
+
+// Settings routes
+
+Route::get('settings', 'SettingsController@edit');
+Route::post('settings', 'SettingsController@update')->name('user-update');
+
+// Socialite routes
+
+Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
+
+Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
+
+// Terms route
+
+Route::get('terms-of-service', 'PagesController@terms');
 
 
 // test route
 
 Route::get('test', 'TestController@index')->middleware(['auth', 'throttle']);
+
+// User routes
+
+Route::resource('user', 'UserController');
 
 
 // Widget routes
