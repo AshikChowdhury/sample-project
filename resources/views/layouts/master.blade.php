@@ -16,6 +16,8 @@
 
     @include('layouts.facebook')
 
+    <div id="app">
+
     @include('layouts.nav')
 
 
@@ -23,9 +25,9 @@
 
     @yield('content')
 
-    <hr>
-
     @include('layouts.bottom')
+
+    </div>
 
 </div> <!-- /container -->
 

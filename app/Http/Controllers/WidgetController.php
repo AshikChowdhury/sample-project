@@ -25,12 +25,11 @@ class WidgetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
 
-        $widgets = Widget::paginate(10);
-
-        return view('widget.index', compact('widgets'));
+        return view('widget.index');
 
     }
 

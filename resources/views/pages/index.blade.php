@@ -17,7 +17,7 @@
             data-show-faces="true">
     </div>
 
-
+    <example></example>
     @include('pages.slider')
     </br></br>
 
