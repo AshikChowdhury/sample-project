@@ -78,9 +78,8 @@ class WidgetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $slug = '')
+    public function show(Widget $widget, $slug = '')
     {
-        $widget = Widget::findOrFail($id);
 
         if ($widget->slug !== $slug) {
 
@@ -98,9 +97,8 @@ class WidgetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Widget $widget)
     {
-        $widget = Widget::findOrFail($id);
 
         if ( ! $this->adminOrCurrentUserOwns($widget)){
 
@@ -118,14 +116,13 @@ class WidgetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Widget $widget)
     {
         $this->validate($request, [
-            'name' => 'required|string|max:40|unique:widgets,name,' .$id
+            'name' => 'required|string|max:40|unique:widgets,name,' .$widget->id
 
         ]);
 
-        $widget = Widget::findOrFail($id);
 
         if ( ! $this->adminOrCurrentUserOwns($widget)){
 
