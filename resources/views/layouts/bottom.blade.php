@@ -1,4 +1,4 @@
 <hr>
 <div class="well">
-    <p>&copy {{ $copyright }}</p>
+    <p> {!!  $copyright !!}</p>
 </div>

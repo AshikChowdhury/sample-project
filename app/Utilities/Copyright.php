@@ -11,7 +11,7 @@ class Copyright
         $date = date('Y') > 2015 ? date ('Y') : 2015;
 
 
-        return $date . ' Sample Project All rights Reserved.';
+        return '&copy ' . $date . ' Sample Project All rights Reserved.';
 
 
     }
