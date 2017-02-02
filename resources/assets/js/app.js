@@ -16,7 +16,75 @@ require('./bootstrap');
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('widget-grid', require('./components/WidgetGrid.vue'));
 Vue.component('marketing-image-grid', require('./components/MarketingImageGrid.vue'));
+Vue.component('chat-message', require('./components/ChatMessage.vue'));
+Vue.component('chat-log', require('./components/ChatLog.vue'));
+Vue.component('chat-composer', require('./components/ChatComposer.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    data: {
+
+        messages: [
+
+
+
+        ],
+
+        currentuser: ''
+
+
+
+    },
+
+    methods: {
+
+
+        addMessage(message) {
+
+
+
+            // add to existing messages
+
+            this.messages.push(message);
+
+
+            axios.post('/messages', message)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+
+        }
+
+
+    },
+
+    created(){
+
+        axios.get('/messages').then(response=> {
+
+            this.messages = response.data;
+
+
+
+        });
+
+        axios.get('/username').then(response=> {
+
+            this.currentuser = response.data;
+
+            console.log(response.data);
+
+
+
+        });
+
+
+
+
+
+    }
 });

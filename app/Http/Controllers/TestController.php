@@ -16,13 +16,19 @@ class TestController extends Controller
     public function index()
     {
 
-        $result = Widget::findOrFail(39);
+        $messages = \App\Message::with('user')->MostRecent()->get();
+
+        $messages = array_reverse($messages->toArray());
+
+        dd(json_encode($messages));
+
+        //$result = Widget::findOrFail(39);
         //throw new EmailNotProvidedException('facebook');
-       // $Beatles = ['John', 'Paul', 'George', 'Ringo'];
+        $Beatles = ['John', 'Paul', 'George', 'Ringo'];
 
-        //alert()->overlay('Problem', 'Cannot hear','error');
+        alert()->overlay('Problem', 'Cannot hear','error');
 
-       // return view('test.index', compact('Beatles'));
+        return view('test.index', compact('Beatles'));
     }
 
 

@@ -91,4 +91,11 @@ class User extends Authenticatable
 
         return $this->hasOne('App\Profile');
     }
+
+    public function messages()
+    {
+
+        return $this->hasMany(Message::class);
+
+    }
 }

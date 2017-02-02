@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,14 @@ Route::get('login', 'Auth\AuthController@showLoginForm')->name('login');
 Route::post('login', 'Auth\AuthController@login');
 Route::post('logout', 'Auth\AuthController@logout')->name('logout');
 
+// Chat routes
+
+Route::get('/chat', function(){
+
+return view('chat.index');
+
+})->middleware('auth');
+
 // home page route
 
 Route::get('/', 'PagesController@index')->name('home');
@@ -33,6 +42,33 @@ Route::get('/', 'PagesController@index')->name('home');
 // MarketingImages routes
 
 Route::resource('marketing-image', 'MarketingImageController');
+
+// Messages route
+
+Route::get('/messages', function(){
+
+    $messages = \App\Message::with('user')->MostRecent()->get();
+
+    $messages = array_reverse($messages->toArray());
+
+    return $messages;
+
+
+})->middleware('auth');
+
+Route::post('/messages', function(){
+
+    $user = Auth::user();
+
+
+    $user->messages()->create([
+
+        'message' => request()->get('message')
+    ]);
+
+    return ['status' => 'OK'];
+
+})->middleware('auth');
 
 // Password routes
 
@@ -60,6 +96,21 @@ Route::resource('profile', 'ProfileController');
 
 Route::get('register', 'Auth\AuthController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\AuthController@register');
+
+// Username route
+
+Route::get('/username', function(){
+
+    if (! request()->ajax()){
+
+        throw new \App\Exceptions\UnauthorizedException();
+
+    }
+
+    return Auth::user()->name;
+
+
+})->middleware('auth');
 
 // Settings routes
 
