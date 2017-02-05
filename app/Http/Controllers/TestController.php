@@ -2,33 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RegistrationCompleted;
 use App\Exceptions\EmailNotProvidedException;
+use App\Utilities\SomethingNew;
 use Illuminate\Http\Request;
 use App\Widget;
+use App\User;
+use App\Utilities\Contracts\RocketShipContract;
 
 class TestController extends Controller
 {
+
+    public function __construct()
+    {
+
+
+
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(RocketShipContract $rocket)
     {
 
-        $messages = \App\Message::with('user')->MostRecent()->get();
 
-        $messages = array_reverse($messages->toArray());
+       // $user = User::findOrFail(1);
 
-        dd(json_encode($messages));
+        return $rocket->blastOff();
 
         //$result = Widget::findOrFail(39);
         //throw new EmailNotProvidedException('facebook');
-        $Beatles = ['John', 'Paul', 'George', 'Ringo'];
+        //$Beatles = ['John', 'Paul', 'George', 'Ringo'];
 
-        alert()->overlay('Problem', 'Cannot hear','error');
+       // alert()->overlay('Problem', 'Cannot hear','error');
 
-        return view('test.index', compact('Beatles'));
+        //return view('test.index', compact('Beatles'));
     }
 
 

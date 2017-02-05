@@ -38,7 +38,7 @@
                 let NowMoment = moment(date);
 
 
-                return NowMoment.format('MMMM Do YYYY, h:mm');
+                return NowMoment.format('MMMM Do YYYY, h:mm a');
 
             },
 
@@ -48,7 +48,7 @@
                 let now = moment();
 
 
-                return now.utc().format('MMMM Do YYYY, h:mm');
+                return now.format('MMMM Do YYYY, h:mm a');
 
 
             }
