@@ -7,12 +7,13 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             Chatroom
-            <span class="badge pull-right">@{{ usersInRoom.length }}</span>
+            <span class="badge pull-right">@{{ roomCount.length }}</span>
         </div>
 
-    <chat-log v-bind:messages="messages"></chat-log>
-    <chat-composer v-on:messagesent="addMessage"
-                       :currentuser="currentuser"></chat-composer>
+    <chat-list v-bind:messages="messages"></chat-list>
+
+    <chat-create v-on:messagecreated="addMessage"
+                     :currentuser="currentuser"></chat-create>
 
     </div>
 

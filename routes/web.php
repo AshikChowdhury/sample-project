@@ -29,11 +29,12 @@ Route::post('logout', 'Auth\AuthController@logout')->name('logout');
 
 // Chat routes
 
-Route::get('/chat', function(){
 
-return view('chat.index');
+Route::get('/chat-messages', 'ChatController@getMessages')->middleware('auth');
 
-})->middleware('auth');
+Route::post('/chat-messages', 'ChatController@postMessage')->middleware('auth');
+
+Route::get('/chat', 'ChatController@index')->middleware('auth');
 
 // home page route
 
@@ -42,37 +43,6 @@ Route::get('/', 'PagesController@index')->name('home');
 // MarketingImages routes
 
 Route::resource('marketing-image', 'MarketingImageController');
-
-// Messages route
-
-Route::get('/messages', function(){
-
-    $messages = \App\Message::with('user')->MostRecent()->get();
-
-    $messages = array_reverse($messages->toArray());
-
-    return $messages;
-
-
-})->middleware('auth');
-
-Route::post('/messages', function(){
-
-    $user = Auth::user();
-
-
-    $message = $user->messages()->create([
-
-        'message' => request()->get('message')
-    ]);
-
-    broadcast(new MessagePosted($message, $user))->toOthers();
-
-    return ['status' => 'OK'];
-
-})->middleware('auth');
-
-// Password routes
 
 
 // Password Reset Routes...
@@ -101,18 +71,7 @@ Route::post('register', 'Auth\AuthController@register');
 
 // Username route
 
-Route::get('/username', function(){
-
-    if (! request()->ajax()){
-
-        throw new \App\Exceptions\UnauthorizedException();
-
-    }
-
-    return Auth::user()->name;
-
-
-})->middleware('auth');
+Route::get('/username', 'UsernameController@show')->middleware('auth');
 
 // Settings routes
 

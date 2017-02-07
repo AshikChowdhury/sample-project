@@ -8,109 +8,20 @@
 require('./bootstrap');
 
 /**
+ * We will require in our components.js file, which contains our component
+ * files.  Putting them in their own file reduces clutter.
+ */
+
+require('./components');
+
+/**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
+ * once it gets too big, we will just require it in like other files.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-Vue.component('widget-grid', require('./components/WidgetGrid.vue'));
-Vue.component('marketing-image-grid', require('./components/MarketingImageGrid.vue'));
-Vue.component('chat-message', require('./components/ChatMessage.vue'));
-Vue.component('chat-log', require('./components/ChatLog.vue'));
-Vue.component('chat-composer', require('./components/ChatComposer.vue'));
-
-const app = new Vue({
-    el: '#app',
-
-    data: {
-
-        messages: [
+require('./vue-root');
 
 
 
-        ],
-
-        currentuser: '',
-
-        usersInRoom: []
-
-
-
-    },
-
-    methods: {
-
-
-        addMessage(message) {
-
-
-
-            // add to existing messages
-
-            this.messages.push(message);
-
-
-            axios.post('/messages', message)
-                .then(response => {
-
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-
-        }
-
-
-    },
-
-    created(){
-
-        axios.get('/messages').then(response=> {
-
-            this.messages = response.data;
-
-
-
-        });
-
-        axios.get('/username').then(response=> {
-
-            this.currentuser = response.data;
-
-
-        });
-
-        Echo.join('chatroom')
-            .here((users) => {
-
-                this.usersInRoom = users;
-
-            })
-            .joining((user) => {
-
-                this.usersInRoom.push(user);
-
-            })
-            .leaving((user) => {
-
-                this.usersInRoom = this.usersInRoom.filter(u => u != user)
-
-            })
-            .listen('MessagePosted', (e) => {
-
-              this.messages.push({
-
-                 message: e.message.message,
-                 user: e.user
-
-              });
-
-            });
-
-
-
-
-
-    }
-});

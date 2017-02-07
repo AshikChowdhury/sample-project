@@ -1,6 +1,6 @@
 <template lang="html">
 
-    <div class="chat-composer">
+    <div class="chat-create">
 
         <input type="text" placeholder="Start typing your message..." v-model="messageText" @keyup.enter="sendMessage">
 
@@ -32,7 +32,7 @@
 
             sendMessage(){
 
-                this.$emit('messagesent', {
+                this.$emit('messagecreated', {
 
                     message: this.messageText,
                     user: {
@@ -54,13 +54,13 @@
 
 <style lang="css">
 
-    .chat-composer{
+    .chat-create{
 
         margin: 2rem;
         display: flex;
     }
 
-    .chat-composer input {
+    .chat-create input {
 
         border: 1px solid;
         flex: 1 auto;
@@ -68,7 +68,7 @@
 
     }
 
-    .chat-composer button {
+    .chat-create button {
 
 
         border-radius: 0;

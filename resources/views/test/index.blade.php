@@ -8,20 +8,15 @@
 
 @section('content')
 
-    <h1>This is My Test Page</h1>
+    <h1>Fruit Basket</h1>
 
-    @if(count($Beatles) > 0)
+    <div>
 
-        @foreach($Beatles as $Beatle)
+        <parent v-bind:items="items"></parent>
+        <add-item v-on:itemcreated="addItem"></add-item>
 
-            {{ $Beatle }} <br>
+    </div>
 
-        @endforeach
 
-    @else
-
-        <h1> Sorry, nothing to show...</h1>
-
-    @endif
 
 @endsection

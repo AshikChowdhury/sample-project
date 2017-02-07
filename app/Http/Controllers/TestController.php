@@ -30,7 +30,7 @@ class TestController extends Controller
 
        // $user = User::findOrFail(1);
 
-        return $rocket->blastOff();
+        //return $rocket->blastOff();
 
         //$result = Widget::findOrFail(39);
         //throw new EmailNotProvidedException('facebook');
@@ -39,6 +39,9 @@ class TestController extends Controller
        // alert()->overlay('Problem', 'Cannot hear','error');
 
         //return view('test.index', compact('Beatles'));
+
+        return view('test.index');
+
     }
 
 

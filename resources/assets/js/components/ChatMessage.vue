@@ -11,9 +11,6 @@
 </template>
 
 
-
-
-
 <script>
 
     export default {
@@ -56,10 +53,6 @@
 
 
         }
-
-
-
-
 
 
     }

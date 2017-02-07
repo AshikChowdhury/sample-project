@@ -1,10 +1,10 @@
 <template lang="html">
-    <div class="chat-log">
+    <div class="chat-list">
 
         <chat-message v-for="message in messages" v-bind:message="message"></chat-message>
         <div class="empty" v-show="messages.length === 0">
 
-            Nothing here yet!
+            No Messages Yet!
 
         </div>
 
@@ -12,9 +12,6 @@
     </div>
 
 </template>
-
-
-
 
 
 <script>
@@ -29,12 +26,9 @@
 </script>
 
 
-
-
-
 <style lang="css">
 
-    .chat-log .chat-message:nth-child(even) {
+    .chat-list .chat-message:nth-child(even) {
 
         background-color: #f7f7f7;
     }
