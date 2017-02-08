@@ -2,13 +2,20 @@
 
 namespace App\Providers;
 
+use App\Utilities\RocketShip;
 use Illuminate\Support\ServiceProvider;
-
+use App\Utilities\Oxygen;
+use App\Utilities\FuelTank;
 
 class RocketShipServiceProvider extends ServiceProvider
 {
 
     protected $defer = true;
+
+    protected $aliases = [
+        'Rocket' => 'App\Utilities\Contracts\RocketShipContract'
+    ];
+
 
     /**
      * Bootstrap the application services.
@@ -31,7 +38,12 @@ class RocketShipServiceProvider extends ServiceProvider
     {
         $this->app
              ->bind('App\Utilities\Contracts\RocketShipContract',
-                    'App\Utilities\SpaceShip');
+                    function(){
+
+                 return new RocketShip(new FuelTank(), new Oxygen());
+
+
+                    });
     }
 
 

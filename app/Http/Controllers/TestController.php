@@ -8,7 +8,7 @@ use App\Utilities\SomethingNew;
 use Illuminate\Http\Request;
 use App\Widget;
 use App\User;
-use App\Utilities\Contracts\RocketShipContract;
+use Facades\App\Utilities\RocketShip;
 
 class TestController extends Controller
 {
@@ -24,13 +24,13 @@ class TestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(RocketShipContract $rocket)
+    public function index()
     {
 
 
        // $user = User::findOrFail(1);
 
-        //return $rocket->blastOff();
+        return RocketShip::blastOff();
 
         //$result = Widget::findOrFail(39);
         //throw new EmailNotProvidedException('facebook');
@@ -40,7 +40,7 @@ class TestController extends Controller
 
         //return view('test.index', compact('Beatles'));
 
-        return view('test.index');
+        //return view('test.index');
 
     }
 
