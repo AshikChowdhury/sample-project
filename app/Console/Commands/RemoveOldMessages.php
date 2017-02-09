@@ -27,7 +27,7 @@ class RemoveOldMessages extends Command
      * @return void
      */
 
-    const MINIMUM_TO_KEEP = 30;
+    const MINIMUM_TO_KEEP = 0;
 
 
     public function __construct()

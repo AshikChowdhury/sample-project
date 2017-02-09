@@ -26209,6 +26209,7 @@ __webpack_require__(150);
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
+ * once it gets too big, we will just require it in like other files.
  */
 
 __webpack_require__(151);
@@ -27180,13 +27181,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var NowMoment = moment(date);
 
-            return NowMoment.format('MMMM Do YYYY, h:mm a');
+            return NowMoment.fromNow();
         },
         currentDate: function currentDate() {
 
             var now = moment();
 
-            return now.format('MMMM Do YYYY, h:mm a');
+            return now.fromNow();
         }
     }
 
