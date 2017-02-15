@@ -11,6 +11,7 @@ use App\Exceptions\UnauthorizedException;
 
 class WidgetController extends Controller
 {
+
     use OwnsRecord;
 
     public function __construct()
@@ -20,6 +21,7 @@ class WidgetController extends Controller
         $this->middleware('admin', ['except' => ['index', 'show']] );
 
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +34,6 @@ class WidgetController extends Controller
         return view('widget.index');
 
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -49,13 +50,12 @@ class WidgetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
 
         $this->validate($request, [
-
             'name' => 'required|unique:widgets|string|max:30',
-
         ]);
 
         $slug = str_slug($request->name, "-");
@@ -71,7 +71,6 @@ class WidgetController extends Controller
         return Redirect::route('widget.index');
 
     }
-
     /**
      * Display the specified resource.
      *
@@ -80,15 +79,14 @@ class WidgetController extends Controller
      */
     public function show(Widget $widget, $slug = '')
     {
-
         if ($widget->slug !== $slug) {
 
             return Redirect::route('widget.show', ['id' => $widget->id,
-                                                   'slug' => $widget->slug],
-                                                   301);
+                                                   'slug' => $widget->slug], 301);
         }
 
         return view('widget.show', compact('widget'));
+
     }
 
     /**
@@ -97,16 +95,17 @@ class WidgetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Widget $widget)
     {
 
         if ( ! $this->adminOrCurrentUserOwns($widget)){
 
             throw new UnauthorizedException;
-
         }
 
         return view('widget.edit', compact('widget'));
+
     }
 
     /**
@@ -116,13 +115,14 @@ class WidgetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Widget $widget)
     {
+
         $this->validate($request, [
+
             'name' => 'required|string|max:40|unique:widgets,name,' .$widget->id
-
         ]);
-
 
         if ( ! $this->adminOrCurrentUserOwns($widget)){
 
@@ -139,6 +139,7 @@ class WidgetController extends Controller
         alert()->success('Congrats!', 'You updated a widget');
 
         return Redirect::route('widget.show', ['widget' => $widget, 'slug' =>$slug]);
+
     }
 
     /**
@@ -147,12 +148,15 @@ class WidgetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
+
         Widget::destroy($id);
 
         alert()->overlay('Attention!', 'You deleted a widget', 'error');
 
         return Redirect::route('widget.index');
+
     }
 }

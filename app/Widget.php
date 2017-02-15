@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Carbon\Carbon;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Widget extends SuperModel
@@ -13,6 +11,7 @@ class Widget extends SuperModel
      *
      * @var array
      */
+
     protected $fillable = ['name',
                            'slug',
                            'user_id'];
@@ -21,8 +20,14 @@ class Widget extends SuperModel
     /**
      * Get the user that owns the widget.
      */
+
     public function user()
     {
+
         return $this->belongsTo('App\User');
+
     }
+
+
+
 }

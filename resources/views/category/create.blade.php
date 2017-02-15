@@ -2,38 +2,33 @@
 
 @section('title')
 
-    <title>Edit Widget</title>
+    <title>Create a Category</title>
 
 @endsection
 
 @section('content')
 
-
     <ol class='breadcrumb'>
         <li><a href='/'>Home</a></li>
-        <li><a href='/widget'>Widgets</a></li>
-        <li><a href='/widget/{{$widget->id}}'>{{$widget->name}}</a></li>
-        <li class='active'>Edit</li>
+        <li><a href='/category'>Categories</a></li>
+        <li class='active'>Create</li>
     </ol>
 
-    <h1>Edit Widget</h1>
+    <h2>Create a New Category</h2>
 
     <hr/>
 
+    <form class="form" role="form" method="POST" action="{{ url('/category') }}">
 
-    <form class="form" role="form" method="POST" action="{{ url('/widget/'. $widget->id) }}">
+    {{ csrf_field() }}
 
-        {{ method_field('PATCH') }}
-
-        {{ csrf_field() }}
-
-    <!-- widget name Form Input -->
+    <!-- Category Name Form Input -->
 
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
-            <label class="control-label">Widget Name</label>
+            <label class="control-label">Category Name</label>
 
-            <input type="text" class="form-control" name="name" value="{{ $widget->name }}">
+            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
 
             @if ($errors->has('name'))
 
@@ -45,11 +40,12 @@
 
         </div>
 
+
         <div class="form-group">
 
             <button type="submit" class="btn btn-primary btn-lg">
 
-                Edit
+                Create
 
             </button>
 

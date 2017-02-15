@@ -2,7 +2,7 @@
 
 @section('title')
 
-    <title>Widgets</title>
+    <title>Categories</title>
 
 @endsection
 
@@ -10,25 +10,20 @@
 
     <ol class='breadcrumb'>
         <li><a href='/'>Home</a></li>
-        <li class='active'>Widgets</li>
+        <li class='active'>Categories</li>
     </ol>
 
-    <h2>Widgets</h2>
+    <h2>Categories</h2>
 
     <hr/>
 
-    <widget-grid></widget-grid>
+    <category-grid></category-grid>
 
-    <div> <a href="/widget/create">
-
+    <div> <a href="/category/create">
             <button type="button" class="btn btn-lg btn-primary">
-
-                    Create New
-
-            </button>
-
-          </a>
-
+                Create New
+            </button></a>
     </div>
+
 
 @endsection

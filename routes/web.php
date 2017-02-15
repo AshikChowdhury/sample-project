@@ -18,7 +18,10 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 // Api Routes
 
+Route::get('api/category-data', 'ApiController@categoryData');
+Route::get('api/lesson-data', 'ApiController@lessonData');
 Route::get('api/marketing-image-data', 'ApiController@marketingImageData');
+Route::get('api/subcategory-data', 'ApiController@subcategoryData');
 Route::get('api/widget-data', 'ApiController@widgetData');
 
 // Authentication routes
@@ -36,9 +39,21 @@ Route::post('/chat-messages', 'ChatController@postMessage')->middleware('auth');
 
 Route::get('/chat', 'ChatController@index')->middleware('auth');
 
+// Category route
+
+Route::resource('category', 'CategoryController');
+
 // home page route
 
 Route::get('/', 'PagesController@index')->name('home');
+
+// Lesson routes
+
+Route::get('lesson/create',  'LessonController@create')->name('lesson.create');
+
+Route::get('lesson/{lesson}-{slug?}', 'LessonController@show')->name('lesson.show');
+
+Route::resource('lesson', 'LessonController', ['except' => ['show', 'create']]);
 
 // MarketingImages routes
 
@@ -76,6 +91,7 @@ Route::get('/username', 'UsernameController@show')->middleware('auth');
 // Settings routes
 
 Route::get('settings', 'SettingsController@edit');
+
 Route::post('settings', 'SettingsController@update')->name('user-update');
 
 // Socialite routes
@@ -83,6 +99,10 @@ Route::post('settings', 'SettingsController@update')->name('user-update');
 Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
 
 Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
+
+// Subcategory route
+
+Route::resource('subcategory', 'SubcategoryController');
 
 // Terms route
 

@@ -2,7 +2,7 @@
 
 @section('title')
 
-    <title>{{ $widget->name }} Widget</title>
+    <title>Subcategory</title>
 
 @endsection
 
@@ -10,64 +10,47 @@
 
     <ol class='breadcrumb'>
         <li><a href='/'>Home</a></li>
-        <li><a href='/widget'>Widgets</a></li>
-        <li><a href='/widget/{{ $widget->id }}'>{{ $widget->name }}</a></li>
+        <li><a href='/subcategory'>Subcategories</a></li>
+        <li><a href='/subcategory/{{ $subcategory->id }}'>{{ $subcategory->name }}</a></li>
     </ol>
 
-    <h1>{{ $widget->name }}</h1>
+    <h1>Subcategory Details</h1>
 
     <hr/>
 
     <div class="panel panel-default">
 
         <!-- Table -->
-
         <table class="table table-striped">
-
-            <thead>
             <tr>
 
                 <th>Id</th>
                 <th>Name</th>
+                <th>Category</th>
                 <th>Date Created</th>
-
-                @if(Auth::user()->adminOrCurrentUserOwns($widget))
-
-                    <th>Edit</th>
-
-                @endif
-
+                <th>Edit</th>
                 <th>Delete</th>
 
             </tr>
-            </thead>
-            <tbody>
+
 
             <tr>
-                <td>{{ $widget->id }} </td>
+                <td>{{ $subcategory->id }} </td>
+                <td> <a href="/subcategory/{{ $subcategory->id }}/edit">
+                        {{ $subcategory->name }}</a></td>
+                <td>{{ $category }}</td>
+                <td>{{ $subcategory->created_at }}</td>
 
-                <td> <a href="/widget/{{ $widget->id }}/edit">
-                        {{ $widget->name }}</a></td>
+                <td> <a href="/subcategory/{{ $subcategory->id }}/edit">
 
-                <td>{{ $widget->created_at }}</td>
-
-                @if(Auth::user()->adminOrCurrentUserOwns($widget))
-
-                <td> <a href="/widget/{{ $widget->id }}/edit">
-
-                        <button type="button" class="btn btn-default">
-
-                                 Edit
-
-                        </button></a></td>
-
-                @endif
+                        <button type="button" class="btn btn-default">Edit</button></a></td>
 
                 <td>
 
                     <div class="form-group">
 
-                        <form class="form" role="form" method="POST" action="{{ url('/widget/'. $widget->id) }}">
+                        <form class="form" role="form" method="POST"
+                              action="{{ url('/subcategory/'. $subcategory->id) }}">
 
                             <input type="hidden" name="_method" value="delete">
 
@@ -81,13 +64,9 @@
 
                 </td>
 
-
             </tr>
 
-            </tbody>
-
         </table>
-
 
     </div>
 
@@ -99,10 +78,8 @@
 
         function ConfirmDelete()
         {
-
             var x = confirm("Are you sure you want to delete?");
             return x;
-
         }
 
     </script>

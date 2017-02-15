@@ -12,6 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -48,4 +49,24 @@ $factory->define(App\Message::class, function ($faker) {
 
 
     ];
+});
+
+$factory->define(App\Category::class, function (Faker\Generator $faker) {
+
+    return [
+
+        'name' => $faker->unique()->word,
+
+    ];
+
+});
+
+$factory->define(App\Subcategory::class, function (Faker\Generator $faker) {
+    return [
+
+        'name' => $faker->unique()->word,
+        'category_id' => $faker->numberBetween($min = 1, $max = 4),
+
+    ];
+
 });
