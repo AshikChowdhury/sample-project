@@ -37,10 +37,10 @@
                                 {{ row.Created }}
                             </td>
                             <td ><a v-bind:href="'/widget/' + row.Id + '/edit'">
-                                    <button type="button" class="btn btn-default">
-                                        Edit
-                                    </button>
-                                </a>
+                                <button type="button" class="btn btn-default">
+                                    Edit
+                                </button>
+                            </a>
                             </td>
                         </tr>
                         </tbody>
@@ -139,37 +139,37 @@
                 switch (request){
                     case this.prev_page_url :
                         getPage = this.prev_page_url +
-                            '&column=' + this.sortKey +
-                            '&direction=' + this.sortOrder;
+                                '&column=' + this.sortKey +
+                                '&direction=' + this.sortOrder;
                         break;
                     case this.next_page_url :
                         getPage = this.next_page_url +
-                            '&column=' + this.sortKey +
-                            '&direction=' + this.sortOrder;
+                                '&column=' + this.sortKey +
+                                '&direction=' + this.sortOrder;
                         break;
                     case this.first_page_url :
                         getPage = this.first_page_url +
-                            '&column=' + this.sortKey +
-                            '&direction=' + this.sortOrder;
+                                '&column=' + this.sortKey +
+                                '&direction=' + this.sortOrder;
                         break;
                     case this.last_page_url :
                         getPage = this.last_page_url +
-                            '&column=' + this.sortKey +
-                            '&direction=' + this.sortOrder;
+                                '&column=' + this.sortKey +
+                                '&direction=' + this.sortOrder;
                         break;
                     case this.query :
                         getPage = 'api/widget-data?' +
-                            'keyword=' + this.query +
-                            '&column=' + this.sortKey +
-                            '&direction=' + this.sortOrder;
+                                'keyword=' + this.query +
+                                '&column=' + this.sortKey +
+                                '&direction=' + this.sortOrder;
                         break;
                     case this.go_to_page :
                         if( this.go_to_page != '' && this.pageInRange()){
                             getPage = 'api/widget-data?' +
-                                'page=' + this.go_to_page +
-                                '&column=' + this.sortKey +
-                                '&direction=' + this.sortOrder +
-                                '&keyword=' + this.query;
+                                    'page=' + this.go_to_page +
+                                    '&column=' + this.sortKey +
+                                    '&direction=' + this.sortOrder +
+                                    '&keyword=' + this.query;
                             this.clearPageNumberInputBox();
                         } else {
                             alert('Please enter a valid page number');
@@ -177,10 +177,10 @@
                         break;
                     default :
                         getPage = 'api/widget-data?' +
-                            'page=' + request +
-                            '&column=' + this.sortKey +
-                            '&direction=' + this.sortOrder +
-                            '&keyword=' + this.query;
+                                'page=' + request +
+                                '&column=' + this.sortKey +
+                                '&direction=' + this.sortOrder +
+                                '&keyword=' + this.query;
                         break;
                 }
                 if (this.query == '' && getPage != null){

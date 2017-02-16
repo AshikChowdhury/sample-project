@@ -9,3 +9,4 @@ Vue.component('subcategory-grid', require('./components/SubcategoryGrid.vue'));
 Vue.component('lesson-grid', require('./components/LessonGrid.vue'));
 Vue.component('lesson-create-category', require('./components/LessonCreateCategory.vue'));
 Vue.component('lesson-edit-category', require('./components/LessonEditCategory.vue'));
+Vue.component('data-extracted-sample', require('./components/DataExtractedSample.vue'));
