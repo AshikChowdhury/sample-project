@@ -5,6 +5,7 @@ namespace App\Http\AuthTraits\Social;
 use App\Exceptions\EmailNotProvidedException;
 use Redirect;
 use Socialite;
+use Illuminate\Support\Facades\Request;
 
 trait ManagesSocialAuth
 {
@@ -27,7 +28,10 @@ trait ManagesSocialAuth
 
         $this->verifyProvider($this->provider = $provider);
 
+
+
         $socialUser = $this->getUserFromSocialite($provider);
+
 
         $providerEmail = $socialUser->getEmail();
 

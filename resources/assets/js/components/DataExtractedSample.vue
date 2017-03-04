@@ -1,14 +1,28 @@
 <template>
+
     <div class="row">
+
         <div class="col-lg-12">
+
             <form id="search">
-                Search <input name="query" v-model="query" @keyup="search(query)" class="search-box">
+
+                   Search
+
+                <input name="query"
+                       v-model="query"
+                       @keyup="search(query)"
+                       class="search-box">
+
             </form>
+
             <div class="pull-right">
+
                 {{ total }} Total Results
+
             </div>
 
             <section class="panel">
+
                 <div class="panel-body">
 
                     <table class="table table-bordered table-striped">
@@ -18,39 +32,65 @@
                             <th v-for="key in gridColumns"
                                 @click="sortBy(key)"
                                 v-bind:class="{active: sortKey == key}">
+
                                 {{ key }}
+
                                 <span class="arrow"
+
                                       v-bind:class="sortOrder > 0 ? 'asc' : 'dsc'">
+
                                 </span>
+
                             </th>
+
                             <th>Actions</th>
+
                         </tr>
                         </thead>
+
                         <tbody>
                         <tr v-for="row in gridData">
+
                             <td>
-                                {{ row.Id }}
+
+                                   {{ row.Id }}
+
                             </td>
+
                             <td>
+
                                 <a v-bind:href="'/widget/' + row.Id + '-' + row.Slug "> {{ row.Name }}</a>
+
                             </td>
+
                             <td>
-                                {{ row.Created }}
+
+                                   {{ row.Created }}
+
                             </td>
+
                             <td ><a v-bind:href="'/widget/' + row.Id + '/edit'">
+
                                 <button type="button" class="btn btn-default">
-                                    Edit
+
+                                        Edit
+
                                 </button>
-                            </a>
+
+                                </a>
                             </td>
+
                         </tr>
                         </tbody>
+
                     </table>
+
                 </div>
 
                 <div class="pull-right">
 
                     page {{ current_page }} of   {{ last_page }} pages
+
                 </div>
 
             </section>
@@ -70,11 +110,7 @@
 
     export default {
 
-        components: { 'pagination' : require('./Pagination')},
-
-        created: function(){
-
-        },
+        components: {'pagination' : require('./Pagination')},
 
         mounted: function () {
 
@@ -115,7 +151,7 @@
 
             getData:  function(request){
 
-                gridData.getQuery(request, 'api/widget-data', this);
+                gridData.getQueryData(request, 'api/widget-data', this);
 
             },
 
@@ -132,7 +168,7 @@
             resetPageNumbers: function(){
                 this.pages = [];
                 for (var i = 1; i <= this.last_page; i++) {
-                    this.pages.push(i);
+                     this.pages.push(i);
                 }
             },
 

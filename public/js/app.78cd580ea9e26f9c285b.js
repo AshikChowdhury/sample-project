@@ -27542,6 +27542,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 var gridData = __webpack_require__(157);
@@ -27549,8 +27589,6 @@ var gridData = __webpack_require__(157);
 /* harmony default export */ __webpack_exports__["default"] = {
 
     components: { 'pagination': __webpack_require__(177) },
-
-    created: function created() {},
 
     mounted: function mounted() {
 
@@ -27589,7 +27627,7 @@ var gridData = __webpack_require__(157);
 
         getData: function getData(request) {
 
-            gridData.getQuery(request, 'api/widget-data', this);
+            gridData.getQueryData(request, 'api/widget-data', this);
         },
 
         setPageNumbers: function setPageNumbers() {
@@ -28887,13 +28925,14 @@ Vue.component('data-extracted-sample', __webpack_require__(171));
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {var dataHelper = {
-    getQuery: function getQuery(request, url, vm) {
+    getQueryData: function getQueryData(request, url, vm) {
 
         var getPage = void 0;
 
         switch (request) {
 
             case vm.prev_page_url:
+
                 getPage = vm.prev_page_url + '&column=' + vm.sortKey + '&direction=' + vm.sortOrder;
 
                 break;
@@ -55262,7 +55301,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "search"
     }
-  }, [_vm._v("\n            Search "), _c('input', {
+  }, [_vm._v("\n\n               Search\n\n            "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -55287,7 +55326,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "pull-right"
-  }, [_vm._v("\n            " + _vm._s(_vm.total) + " Total Results\n        ")]), _vm._v(" "), _c('section', {
+  }, [_vm._v("\n\n            " + _vm._s(_vm.total) + " Total Results\n\n        ")]), _vm._v(" "), _c('section', {
     staticClass: "panel"
   }, [_c('div', {
     staticClass: "panel-body"
@@ -55303,16 +55342,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.sortBy(key)
         }
       }
-    }, [_vm._v("\n                            " + _vm._s(key) + "\n                            "), _c('span', {
+    }, [_vm._v("\n\n                            " + _vm._s(key) + "\n\n                            "), _c('span', {
       staticClass: "arrow",
       class: _vm.sortOrder > 0 ? 'asc' : 'dsc'
     })])
   }), _vm._v(" "), _c('th', [_vm._v("Actions")])], 2)]), _vm._v(" "), _c('tbody', _vm._l((_vm.gridData), function(row) {
-    return _c('tr', [_c('td', [_vm._v("\n                            " + _vm._s(row.Id) + "\n                        ")]), _vm._v(" "), _c('td', [_c('a', {
+    return _c('tr', [_c('td', [_vm._v("\n\n                               " + _vm._s(row.Id) + "\n\n                        ")]), _vm._v(" "), _c('td', [_c('a', {
       attrs: {
         "href": '/widget/' + row.Id + '-' + row.Slug
       }
-    }, [_vm._v(" " + _vm._s(row.Name))])]), _vm._v(" "), _c('td', [_vm._v("\n                            " + _vm._s(row.Created) + "\n                        ")]), _vm._v(" "), _c('td', [_c('a', {
+    }, [_vm._v(" " + _vm._s(row.Name))])]), _vm._v(" "), _c('td', [_vm._v("\n\n                               " + _vm._s(row.Created) + "\n\n                        ")]), _vm._v(" "), _c('td', [_c('a', {
       attrs: {
         "href": '/widget/' + row.Id + '/edit'
       }
@@ -55321,10 +55360,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "type": "button"
       }
-    }, [_vm._v("\n                                Edit\n                            ")])])])])
+    }, [_vm._v("\n\n                                    Edit\n\n                            ")])])])])
   }))])]), _vm._v(" "), _c('div', {
     staticClass: "pull-right"
-  }, [_vm._v("\n\n                page " + _vm._s(_vm.current_page) + " of   " + _vm._s(_vm.last_page) + " pages\n            ")])]), _vm._v(" "), _c('pagination')], 1)])
+  }, [_vm._v("\n\n                page " + _vm._s(_vm.current_page) + " of   " + _vm._s(_vm.last_page) + " pages\n\n            ")])]), _vm._v(" "), _c('pagination')], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

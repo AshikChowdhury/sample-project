@@ -1,12 +1,13 @@
 var dataHelper = {
 
-    getQuery(request, url, vm){
+    getQueryData(request, url, vm){
 
             let getPage;
 
             switch (request){
 
                 case vm.prev_page_url :
+
                     getPage = vm.prev_page_url +
                         '&column=' + vm.sortKey +
                         '&direction=' + vm.sortOrder;

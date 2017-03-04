@@ -17,7 +17,7 @@
 
     <hr/>
 
-    <widget-grid></widget-grid>
+    <data-extracted-sample></data-extracted-sample>
 
     <div> <a href="/widget/create">
 

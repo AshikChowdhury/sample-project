@@ -52,14 +52,17 @@ trait RoutesSocialUser
 
         try {
 
-            $socialUser = Socialite::driver($provider)->user();
+            $socialUser = Socialite::driver('facebook')->user();
+
+        }
+
+        catch (\Exception $e) {
+
+            throw new ConnectionNotAcceptedException();
+
+        }
 
             return $socialUser;
 
-        } catch (Exception $e) {
-
-            throw new ConnectionNotAcceptedException;
-
-        }
     }
 }
